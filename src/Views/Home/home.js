@@ -1,7 +1,7 @@
 
 import './home.css';
 import Todocard from "./../../components/ToDoCard/todocard";
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import toast, { Toaster } from "react-hot-toast";
 
 function Home() {
@@ -11,8 +11,19 @@ function Home() {
   const [newTask, setNewTask] = useState("");
   const [category, setCategory] = useState("");
 
+  useEffect(()=>{
+if(todoList.length===0) return
 
-  
+localStorage.setItem("todoList",JSON.stringify(todoList))
+  }, [todoList])
+
+  useEffect(()=>{
+    const savedList =localStorage.getItem("todoList")
+    if(savedList){
+      setTodoList(JSON.parse(savedList))
+    }
+
+  },[])
 
   return (
     <div className="container-todo">
@@ -44,7 +55,7 @@ function Home() {
           <option value="Day15">within 15 days</option>
           <option value="Day30">within 30 days</option>
           <option value="Day45">within 45 days</option>
-          <option value="Other">Anytime</option>
+          <option value="Anytime">Anytime</option>
         </select>
         <button
           className="todo-button"

@@ -10,7 +10,7 @@ function Todocard({ task, category }) {
     "Day15": "#FFFF00", 
     "Day30": "#008000", 
     "Day45": "#0000FF", 
-    "Other": "#800080",
+    "Anytime": "#800080",
     "": "#FFFFFF" 
   };
  
