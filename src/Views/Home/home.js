@@ -25,12 +25,18 @@ localStorage.setItem("todoList",JSON.stringify(todoList))
 
   },[])
 
+  function deleteTask(index) {
+    const newTodoList = todoList.filter((item, i) => i !== index);
+    setTodoList(newTodoList);
+    toast.success("Task deleted successfully.");
+  }
+
   return (
     <div className="container-todo">
       <h1 className="Heading">To Do App 🎯🤩</h1>
       <div className="todo-app">
         {todoList.map((todoItem, i) => (
-          <Todocard key={i} task={todoItem.task} category={todoItem.category} />
+          <Todocard key={i}index={i} task={todoItem.task} category={todoItem.category} deleteItem={deleteTask} />
         ))}
         {todoList.length === 0 ? (
           <p style={{ textAlign: "center" }}>No tasks to show ..... Add new tasks</p>

@@ -1,8 +1,9 @@
 
 import React from 'react';
 import './todocard.css';
+import Trash from "./trash.png"
 
-function Todocard({ task, category }) {
+function Todocard({index, task, category ,deleteItem}) {
 
   const colorMap = {
     "Day2": "#FF0000", 
@@ -20,7 +21,15 @@ function Todocard({ task, category }) {
       <div className="todo-content">
         <p className="todo-text">{task}</p>
         <p className="todo-category" style={{color:colorMap[category]}}>{category}</p>
+        <img
+          src={Trash}
+          className="delete-icon"
+          onClick={()=>{
+            deleteItem(index)
+          }}
+        />
       </div>
+      
     </div>
   );
 }

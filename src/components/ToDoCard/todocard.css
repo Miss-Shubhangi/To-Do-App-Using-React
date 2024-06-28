@@ -4,10 +4,15 @@
   padding: 10px 20px;
   margin: 10px 0;
   border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0  5px 2px 2px rgba(0, 0, 0, 0.1);
   border: 1px solid #218838;
   display: flex;
   align-items: center;
+}
+.todo-card:hover{
+  box-shadow: 0  5px 5px 5px rgba(0, 0, 0, 0.1);
+  padding: 10px 22px;
+  margin-left: 10px;
 }
 
 .circle {
@@ -21,6 +26,7 @@
   display: flex;
   justify-content: space-between;
   width: 100%;
+ 
 }
 
 .todo-text {
@@ -37,4 +43,14 @@
   width: 80px;
   text-align: right;
 }
+.delete-icon {
+  width: 20px;
+  height: 20px;
+  margin-left: 15px;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
 
+.delete-icon:hover {
+  transform: scale(1.2);
+}
