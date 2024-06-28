@@ -3,6 +3,7 @@ import './home.css';
 import Todocard from "./../../components/ToDoCard/todocard";
 import { useEffect, useState } from 'react';
 import toast, { Toaster } from "react-hot-toast";
+import Swal from 'sweetalert2';
 
 function Home() {
   const [todoList, setTodoList] = useState([
@@ -25,11 +26,24 @@ localStorage.setItem("todoList",JSON.stringify(todoList))
 
   },[])
 
-  function deleteTask(index) {
+
+function deleteTask(index) {
+  Swal.fire({
+    title: 'You done this task?',
+    text: 'You want to delete this task!',
+    icon: 'warning',
+    showCancelButton: true,
+    
+  }).then((result) => {
+    if (!result.isConfirmed) {
+      return;
+    }
     const newTodoList = todoList.filter((item, i) => i !== index);
     setTodoList(newTodoList);
     toast.success("Task deleted successfully.");
-  }
+  });
+}
+
 
   return (
     <div className="container-todo">
